@@ -1,4 +1,4 @@
-import "../../App.css"
+import "../../sidebar.css"
 import ChatCard from "./ChatCard.js"
 import ChatDivider from "./ChatDivider.js"
 

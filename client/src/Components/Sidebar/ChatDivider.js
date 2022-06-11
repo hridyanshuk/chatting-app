@@ -1,4 +1,4 @@
-import "../../App.css"
+import "../../sidebar.css"
 
 function ChatDivider() {
   return (

@@ -1,4 +1,4 @@
-import "../../chatsection.css"
+import "../../../chatsection.css"
 
 function InfoCard(props) {
   var lastSeen="";

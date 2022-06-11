@@ -1,4 +1,4 @@
-import "../../App.css"
+import "../../sidebar.css"
 import {Avatar} from "@mui/material"
 import ChatDivider from "./ChatDivider.js"
 

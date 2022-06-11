@@ -1,4 +1,4 @@
-import "../../App.css"
+import "../../sidebar.css"
 import SearchIcon from '@mui/icons-material/Search';
 
 function SearchBox() {

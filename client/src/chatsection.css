@@ -18,6 +18,7 @@
   border-left: lightgrey solid 0.5px;
   height: 70px;
   background-color: rgb(240, 242, 245);
+  align-items: center;
 }
 
 .chatsectionHeaderLeft {
@@ -34,4 +35,12 @@
 
 .chatsectionLastSeen {
   color: grey;
+}
+
+
+.chatsectionHeaderRight {
+  color: black;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
 }

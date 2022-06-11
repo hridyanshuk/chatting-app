@@ -41,11 +41,11 @@
   /*
   DFDFDF or
   rgb(240, 242, 245)*/
-  border-radius: 10px;
+  border-radius: 5px;
   /* height: 30px; */
   margin: 15px 10px;
   margin-bottom: 5px;
-  padding: 10px 10px;
+  padding: 7px 10px;
   min-height: 25px;
 }
 
@@ -58,6 +58,7 @@
 .sidebarNonscrollable {
   /* height: 120px; */
   border-bottom: lightgrey solid 0.5px;
+  padding-bottom: 5px;
 }
 
 .sidebarChatlist {
@@ -89,11 +90,11 @@
   width: 73%;
 }
 
-/* .sidebarChatcardInfoTitle {
-  font-weight: bold;
-  padding: 0px 10px;
-  font-size: 13px;
-} */
+.sidebarChatcardInfoTitle {
+  /* font-weight: bold; */
+  /* padding: 0px 10px; */
+  font-size: 18px;
+}
 .sidebarChatlistDivider {
   background: lightgrey;
   border: none;
@@ -103,7 +104,8 @@
 
 .sidebarChatcardInfoMessage {
   padding: 0px;
-  font-size: 12px;
+  font-size: 15px;
+  color: grey;
 }
 
 .sidebarChatdivider hr {

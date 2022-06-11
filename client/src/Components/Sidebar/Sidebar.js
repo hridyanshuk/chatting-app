@@ -1,4 +1,4 @@
-import '../../App.css';
+import '../../sidebar.css';
 import Header from "./Header.js"
 import SearchBox from "./SearchBox.js"
 import ChatList from "./ChatList.js"

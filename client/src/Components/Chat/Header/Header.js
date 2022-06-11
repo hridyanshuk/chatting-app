@@ -1,4 +1,4 @@
-import "../../chatsection.css"
+import "../../../chatsection.css"
 import HeaderRight from "./HeaderRight.js"
 import HeaderLeft from "./HeaderLeft.js"
 
