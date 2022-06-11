@@ -4,7 +4,7 @@ import ChatDivider from "./ChatDivider.js"
 
 function ChatCard(props) {
   return (
-    <div>
+    <div className="sidebarChatcardContainer">
     <div className="sidebarChatcard">
       <Avatar />
       <div className="sidebarChatcardInfo">

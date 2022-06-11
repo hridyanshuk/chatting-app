@@ -7,6 +7,7 @@ function Sidebar() {
     <div className="sidebar">
       <Header />
       <SearchBox />
+      <hr className="sidebarChatlistDivider" />
       <ChatList />
     </div>
   )

@@ -1,5 +1,7 @@
+
 body {
   background: #DDDDDD;
+  /* min-width: 590px; */
 }
 
 /* .app {
@@ -12,8 +14,12 @@ body {
   display: flex;
   /* background: #343434; */
   /* margin-top: -10vh; */
-  height: 80vh;
-  width: 85vw;
+  /* height: 100vh; */
+  /* width: 85vw; */
+  /* height: 100vh; */
+  /* min-height:  */
+  max-height: 100vh;
+  /* height:  */
   min-width: 590px;
 }
 
@@ -27,6 +33,7 @@ body {
   /* min-width: 42vw; */
   /* min-width: 660px; */
   min-width: 360px;
+  /* height: inherit; */
 }
 
 .sidebar {
@@ -36,6 +43,8 @@ body {
   /* min-width: 28vw; */
   min-width: 230px;
   background-color: white;
+  overflow: scroll;
+  /* max-height: 100vh; */
   /* background: rgba(20,20,20,0.5); */
 }
 
@@ -45,6 +54,10 @@ body {
   padding: 10px 20px 5px 20px;
   justify-content: space-between;
   background-color: rgb(240, 242, 245);
+  min-height: 40px;
+  max-height: 40px;
+  /* position: fixed; */
+  position: static;
 }
 
 .sidebarHeaderRight {
@@ -61,6 +74,7 @@ body {
   display: flex;
   align-items: center;
   background-color: rgb(240, 242, 245);
+  /* position: fixed; */
   /*
   DFDFDF or
   rgb(240, 242, 245)*/
@@ -69,12 +83,20 @@ body {
   margin: 10px;
   margin-bottom: 2px;
   padding: 5px 10px;
+  min-height: 25px;
 }
 
 .sidebarSearchbox input {
   border: none;
   outline: none;
   background-color: inherit;
+}
+
+.sidebarChatlist {
+  /* overflow: scroll; */
+  /* max-height: calc(100vh-118.5p) */
+  max-height: 600px;
+  /* max-height: inherit; */
 }
 
 
@@ -98,7 +120,12 @@ body {
   padding: 0px 10px;
   font-size: 13px;
 } */
-
+.sidebarChatlistDivider {
+  background: lightgrey;
+  border: none;
+  min-height: 0.5px;
+  width: 100%;
+}
 
 .sidebarChatcardInfoMessage {
   padding: 0px;
