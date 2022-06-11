@@ -1,0 +1,121 @@
+body {
+  background: #DDDDDD;
+}
+
+/* .app {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+} */
+
+.appBody {
+  display: flex;
+  /* background: #343434; */
+  /* margin-top: -10vh; */
+  height: 80vh;
+  width: 85vw;
+  min-width: 590px;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  flex: 0.7;
+  /* background-color: #EEEEEE; */
+  background: rgb(248, 248, 248);
+  /* min-width: 42vw; */
+  /* min-width: 660px; */
+  min-width: 360px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
+  /* min-width: 28vw; */
+  min-width: 230px;
+  background-color: white;
+  /* background: rgba(20,20,20,0.5); */
+}
+
+.sidebarHeader  {
+  display: flex;
+  /* border-right: 1px solid grey; */
+  padding: 10px 20px 5px 20px;
+  justify-content: space-between;
+  background-color: rgb(240, 242, 245);
+}
+
+.sidebarHeaderRight {
+  color: grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* min-width: 10vw; */
+  /* background-color: red; */
+}
+
+.sidebarSearchbox {
+  color: grey;
+  display: flex;
+  align-items: center;
+  background-color: rgb(240, 242, 245);
+  /*
+  DFDFDF or
+  rgb(240, 242, 245)*/
+  border-radius: 10px;
+  /* height: 30px; */
+  margin: 10px;
+  margin-bottom: 2px;
+  padding: 5px 10px;
+}
+
+.sidebarSearchbox input {
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+
+
+.sidebarChatcard {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0px 20px;
+  align-items: center;
+}
+
+.sidebarChatcardInfo {
+  /* border-bottom: 1px solid lightgrey; */
+  margin: 5px 20px 5px 20px;
+  /* padding-bottom: 10px; */
+  /* flex: 0.7; */
+  width: 73%;
+}
+
+/* .sidebarChatcardInfoTitle {
+  font-weight: bold;
+  padding: 0px 10px;
+  font-size: 13px;
+} */
+
+
+.sidebarChatcardInfoMessage {
+  padding: 0px;
+  font-size: 12px;
+}
+
+.sidebarChatdivider hr {
+  /* width: 60%; */
+  color: lightgrey;
+  /* size: 1px; */
+  background-color: lightgrey;
+  height: 0.5px;
+  /* border-style: solid; */
+  border: none;
+  margin: 0px;
+  margin-left: 81px;
+  margin-right: 20px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
