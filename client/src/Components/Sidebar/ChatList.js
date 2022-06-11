@@ -4,8 +4,8 @@ import ChatDivider from "./ChatDivider.js"
 
 function ChatList() {
   return (
-    <div ClassName="sidebarChatlist">
-      
+    <div className="sidebarChatlist">
+
       <ChatCard data={{
         name:"Hridyanshu",
         message:"I am making whats..."
@@ -39,6 +39,10 @@ function ChatList() {
         message:"I am making colle..."
       }}/>
       <ChatCard data={{
+        name:"Ripudaman",
+        message:"I am making colle..."
+      }}/>
+      <ChatCard data={{
         name:"Jeteish",
         message:"I am making googl..."
       }}/>
@@ -54,10 +58,7 @@ function ChatList() {
         name:"Ripudaman",
         message:"I am making colle..."
       }}/>
-      <ChatCard data={{
-        name:"Jeteish",
-        message:"I am making googl..."
-      }}/>
+
 
     </div>
   )

@@ -5,9 +5,11 @@ import ChatList from "./ChatList.js"
 function Sidebar() {
   return (
     <div className="sidebar">
-      <Header />
-      <SearchBox />
-      <hr className="sidebarChatlistDivider" />
+      <div className="sidebarNonscrollable">
+        <Header />
+        <SearchBox />
+        {/*<hr className="sidebarChatlistDivider" />*/}
+      </div>
       <ChatList />
     </div>
   )

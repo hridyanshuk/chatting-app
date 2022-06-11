@@ -1,0 +1,37 @@
+.chatsection {
+  display: flex;
+  flex-direction: column;
+  color: Black;
+  flex: 0.7;
+  /* background-color: #EEEEEE; */
+  background: rgb(248, 248, 248);
+  /* min-width: 42vw; */
+  /* min-width: 660px; */
+  min-width: 360px;
+  /* height: inherit; */
+}
+
+.chatsectionHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-left: lightgrey solid 0.5px;
+  height: 70px;
+  background-color: rgb(240, 242, 245);
+}
+
+.chatsectionHeaderLeft {
+  display: flex;
+}
+
+.chatsectionHeaderInfo *{
+  padding-left: 10px;
+}
+
+.chatsectionContact {
+  color: Black;
+}
+
+.chatsectionLastSeen {
+  color: grey;
+}
