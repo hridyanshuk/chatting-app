@@ -1,7 +1,7 @@
 .chatsection {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   color: Black;
   flex: 0.7;
   /* background-color: #EEEEEE; */
@@ -72,7 +72,8 @@
   padding: 10px 15px;
   word-wrap: break-word;
   background-color: white;
-
+  max-height: 100px;
+  overflow-y: auto;
 }
 
 .chatsectionAttachicon {
@@ -99,3 +100,68 @@
   display: grid;
   place-items: center;
 } */
+
+
+.chat {
+  height: 100%;
+  overflow-y: auto;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  /* IMPORTANT */
+  /* justify-content: flex-end; */
+
+
+
+  background: rgb(239, 236, 226);
+}
+
+.messageCardContainer_sender {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.messageCardContainer_reciever {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.messageCard {
+  background-color: white;
+  width: fit-content;
+  max-width: 40%;
+  margin-bottom: 10px;
+  padding: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+}
+
+
+
+.messageSenderName {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.senderType_reciever {
+  color: Green;
+}
+
+.senderType_sender {
+  color: Blue;
+}
+
+.messageContent {
+  /* max-width: 40%; */
+  margin: 0px;
+}
+
+.messageTimeStamp {
+  font-size: 10px;
+  color: grey;
+  text-align: right;
+  padding-right: 3px;
+  /* padding-top: 5px; */
+}

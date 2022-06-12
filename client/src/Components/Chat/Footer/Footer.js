@@ -6,9 +6,11 @@ function Footer() {
   return (
     <div className="chatsectionFooter">
       <div className="chatsectionAttachicon">
-        <AttachFileIcon />
+        <IconButton>
+          <AttachFileIcon />
+        </IconButton>
       </div>
-      <div contenteditable="true" className = "chatMessadeDiv" />
+      <div contentEditable="true" className = "chatMessadeDiv" />
       <div className="sendButton">
         <SendIcon />
       </div>
