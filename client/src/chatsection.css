@@ -1,6 +1,7 @@
 .chatsection {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   color: Black;
   flex: 0.7;
   /* background-color: #EEEEEE; */
@@ -44,3 +45,57 @@
   align-items: center;
   /* justify-content: space-between; */
 }
+
+.chatsectionFooter {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  align-items: center;
+  background-color: rgb(240, 242, 245);
+}
+
+.sendButton {
+  /* width: 20px; */
+}
+
+.chatsectionAttachicon {
+  /* width: 20px; */
+}
+
+.chatMessadeDiv {
+  width: 85%;
+  margin: 0px 10px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  /* height: 40px; */
+  padding: 10px 15px;
+  word-wrap: break-word;
+  background-color: white;
+
+}
+
+.chatsectionAttachicon {
+  color: grey;
+}
+.sendButton {
+  color: white;
+  background-color: rgb(1,167,121);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  padding-left: 2px;
+}
+
+/* .sendButton {
+  color: white;
+  background-color: darkgreen;
+  border-radius: 30px;
+  padding: 5px;
+  width:35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+} */
