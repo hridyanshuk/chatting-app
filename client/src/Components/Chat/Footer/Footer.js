@@ -2,7 +2,63 @@ import "../../../chatsection.css"
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
 import {IconButton} from "@mui/material"
+import axios from "../../../axios.js"
+import {useRef, useEffect} from "react"
+import textVersion from 'textversionjs'
+
 function Footer() {
+
+  const textBox = useRef(null)
+  const sendButton = useRef(null)
+
+  const sendMessage = () => {
+    var element = textBox.current
+    const data = element.innerHTML
+    // alert(data)
+    // alert(textVersion(data))
+    element.innerHTML = ""
+    if(data != "") {
+      const msg = {
+        sender:"Mandalorian",
+        content:data,
+        timeStamp:"now",
+        type:false
+      }
+      axios.post("/messages/new", msg).then( (response) => {
+        console.log(response.body)
+      })
+    }
+  }
+
+  const tabKey = (key) => {
+    if(key.keyCode == 9) {
+      key.preventDefault()
+      // var textfield = textBox.current
+      // var temp = textfield.innerHTML
+      // textfield.innerHTML = temp+"&emsp;"
+      // // setEndOfContenteditable(textfield)
+      // // alert("tab")
+
+    }
+  }
+
+  useEffect(() => {
+    var element = sendButton.current // Send button
+    element.addEventListener('click', sendMessage)
+    // element.innerHTML = ""
+
+
+    var textfield = textBox.current
+    textfield.addEventListener('keydown', tabKey)
+
+    return () => {
+      element.removeEventListener('click', sendMessage)
+      textfield.removeEventListener('keydown', tabKey)
+    }
+  }, [])
+
+
+
   return (
     <div className="chatsectionFooter">
       <div className="chatsectionAttachicon">
@@ -10,8 +66,8 @@ function Footer() {
           <AttachFileIcon />
         </IconButton>
       </div>
-      <div contentEditable="true" className = "chatMessadeDiv" />
-      <div className="sendButton">
+      <p contentEditable="true" className = "chatMessadeDiv" ref = {textBox} />
+      <div className="sendButton" ref = {sendButton}>
         <SendIcon />
       </div>
     </div>
