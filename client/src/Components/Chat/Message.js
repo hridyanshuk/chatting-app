@@ -1,8 +1,8 @@
 import "../../chatsection.css"
 import {useState} from "react"
 
-const thisUser = "Mandalorian"
-function Message(props) {
+// const thisUser = "Mandalorian"
+function Message({data, thisUser}) {
   // const messageContent = useRef();
   // const [message, setMessage] = useState({
   //   sender:props.data.sender,
@@ -13,21 +13,21 @@ function Message(props) {
 
   var type = "reciever";
 
-  if(props.data.sender !== thisUser) type = "sender"
+  if(data.sender !== thisUser) type = "sender"
 
   return (
     <div className={"messageCardContainer_"+type}>
       <div className="messageCard">
         <div className={"messageSenderName"+" senderType_"+type}>
-          {props.data.sender}
+          {data.sender}
         </div>
-        <div className = "messageContent" dangerouslySetInnerHTML={{__html:props.data.content}}>
+        <div className = "messageContent" dangerouslySetInnerHTML={{__html:data.content}}>
           {/*dangerouslySetInnerHTML={{__html:props.data.content}}*/}
           {/*props.data.content*/}
         </div>
 
         <div className="messageTimeStamp">
-          {props.data.timeStamp}
+          {data.timeStamp}
         </div>
       </div>
     </div>

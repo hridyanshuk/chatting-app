@@ -1,17 +1,17 @@
-import '../../App.css';
+ import '../../App.css';
 import Header from "./Header/Header.js"
 import Footer from "./Footer/Footer.js"
 import Message from "./Message.js"
-import {useEffect, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import axios from "../../axios.js"
 import Pusher from 'pusher-js'
-function ChatSection() {
+function ChatSection({ thisUser }) {
 
   const [messages, setMessages] = useState([])
   // for fetching
-
+  const chatRef = useRef()
   useEffect(() => {
-    axios.get('/messages/sync').then((response) => {
+    axios.get('/messages/sync', {roomID: 1}).then((response) => {
       setMessages(response.data);
     })
   }, [])
@@ -26,12 +26,15 @@ function ChatSection() {
     const channel = pusher.subscribe('messages');
     channel.bind('inserted', function(newMessage) {
       setMessages([...messages, newMessage])
-      console.log("done brooo")
+      
     });
 
     return () => {
       channel.unbind_all()
       channel.unsubscribe()
+      const element = chatRef.current
+      element.scrollTop = element.scrollHeight
+      // console.log("done brooo")
     }
   }, [messages])
 
@@ -40,14 +43,14 @@ function ChatSection() {
   return (
     <div className="chatsection">
       <Header />
-      <div className="chat">
+      <div className="chat" ref = {chatRef}>
         {messages.map((data) => {
           return (
-            <Message data = {data} />
+            <Message data = {data} thisUser = {thisUser} />
           )
         })}
       </div>
-      <Footer />
+      <Footer thisUser={thisUser} />
     </div>
   )
 }

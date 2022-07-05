@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import Signin from './Auth/Signin';
+import Signup from './Auth/Signup';
+import Wrap from './wrap';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <Wrap />  
   </React.StrictMode>
 );
 

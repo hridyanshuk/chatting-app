@@ -2,6 +2,8 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import Messages from "./dbMessages.js"
+import User from './Models/user.js'
+
 import Pusher from 'pusher'
 import cors from 'cors'
 
@@ -52,9 +54,10 @@ const db = mongoose.connection
 
 db.once('open', () => {
   console.log('Database connected')
-  console.log()
   const msgCollection = db.collection("messages")
   const changeStream = msgCollection.watch()
+
+  
 
   changeStream.on('change', (change) => {
     // console.log(change)
@@ -76,10 +79,10 @@ db.once('open', () => {
 
 
 // api routes
-
-app.get('/', (req, res)=> {
-  res.status(200).send('yoo')
-})
+//
+// app.get('/', (req, res)=> {
+//   res.status(200).send('yoo')
+// })
 
 app.post('/messages/new', (req, res) => {
   const dbMessage = req.body
@@ -104,6 +107,39 @@ app.get('/messages/sync', (req, res) => {
     }
   })
 })
+
+
+app.post('/user/new', (req, res) => {
+  const userData = req.body
+  User.create(userData, (err) => {
+    if(err) res.status(202).send("Already exists")
+    else res.status(201).send("User added")
+  })
+})
+
+app.post('/user/signin', (req, res) => {
+  const userData = req.body
+  console.log(userData)
+  var user = {}
+  var found=false
+  User.findOne({
+    "username": userData.username,
+    "password": userData.password
+  }, (err, data) => {
+    if(err) res.status(500).send(err)
+    else {
+      if(data === null) res.status(202).send("Does not exist")
+      else res.status(201).send({
+        username: data.username,
+        name: data.name
+      })
+    }
+  })
+
+  
+  
+})
+
 
 
 // listen

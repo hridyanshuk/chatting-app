@@ -1,10 +1,22 @@
 import mongoose from 'mongoose'
 
 const messageSchema = mongoose.Schema({
-  sender: String,
-  content: String,
-  timeStamp: String,
-  seen: Boolean
+  sender: {
+    type:String,
+    required:true
+  },
+  content: {
+    type:String,
+    required:true
+  },
+  timeStamp: {
+    type:String,
+    required:true
+  },
+  room: {
+    type:Number,
+    required:true
+  }
 })
 
 export default mongoose.model('messages', messageSchema)

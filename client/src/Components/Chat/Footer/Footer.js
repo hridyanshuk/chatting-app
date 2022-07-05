@@ -6,12 +6,12 @@ import axios from "../../../axios.js"
 import {useRef, useEffect} from "react"
 import textVersion from 'textversionjs'
 
-function Footer() {
+function Footer({ thisUser }) {
 
   const textBox = useRef(null)
   const sendButton = useRef(null)
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     var element = textBox.current
     const data = element.innerHTML
     // alert(data)
@@ -19,14 +19,14 @@ function Footer() {
     element.innerHTML = ""
     if(data != "") {
       const msg = {
-        sender:"Mandalorian",
+        sender:thisUser,
         content:data,
         timeStamp:"now",
-        type:false
+        room: 1
       }
-      axios.post("/messages/new", msg).then( (response) => {
-        console.log(response.body)
-      })
+      await axios.post("/messages/new", msg).then( (response) => {
+        console.log("Posted")
+      }).catch((err)=>console.log(err))
     }
   }
 
