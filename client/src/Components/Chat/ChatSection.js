@@ -8,7 +8,7 @@ import Pusher from 'pusher-js'
 import Axios from 'axios'
 import baseurl from '../../baseurl';
 
-function ChatSection({ thisUser, thisName, currentRoom }) {
+function ChatSection({ thisUser, thisName, currentRoom, chattingWith }) {
   // console.log(thisUser)
   // console.log(thisName)
   const [messages, setMessages] = useState([])
@@ -51,7 +51,7 @@ function ChatSection({ thisUser, thisName, currentRoom }) {
 
   return (
     <div className="chatsection">
-      <Header />
+      <Header chattingWith={chattingWith} />
       <div className="chat" ref = {chatRef}>
         {messages.map((data) => {
           return (

@@ -2,7 +2,7 @@ import { useState } from "react"
 import "../../sidebar.css"
 import ChatCard from "./ChatCard.js"
 
-function ChatList({ chatList, thisUser, setCurrentRoom }) {
+function ChatList({ chatList, thisUser, setCurrentRoom, setChattingWith }) {
 
 
 
@@ -12,7 +12,7 @@ function ChatList({ chatList, thisUser, setCurrentRoom }) {
     return <ChatCard data = {{
       name: name,
       roomid: chat.roomid
-    }} setCurrentRoom={setCurrentRoom} />
+    }} setCurrentRoom={setCurrentRoom} setChattingWith = {setChattingWith} />
   })
 
   return (

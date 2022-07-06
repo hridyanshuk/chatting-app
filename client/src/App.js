@@ -9,7 +9,7 @@ import icon from './asset/icon.png'
 function App({logged, thisUser, thisName}) {
   const navigate = useNavigate()
   const [currentRoom, setCurrentRoom] = useState(0)
-  
+  const [chattingWith, setChattingWith] = useState("Select a chat")
   if(!logged) {
     return (
       <div className='start'>
@@ -25,8 +25,8 @@ function App({logged, thisUser, thisName}) {
   return (
     <div className="app">
       <div className="appBody">
-        <Sidebar thisUser={thisUser} setCurrentRoom={setCurrentRoom} />
-        <ChatSection thisUser={thisUser} thisName={thisName} currentRoom ={currentRoom} />
+        <Sidebar thisUser={thisUser} setCurrentRoom={setCurrentRoom} setChattingWith={setChattingWith} />
+        <ChatSection thisUser={thisUser} thisName={thisName} currentRoom ={currentRoom} chattingWith={chattingWith} />
       </div>
     </div>
   );

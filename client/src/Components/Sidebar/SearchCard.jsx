@@ -1,5 +1,5 @@
 import axios from '../../axios'
-export default ({ username, name, setSearchResult, setCurrentRoom, thisUser }) => {
+export default ({ username, name, setSearchResult, setCurrentRoom, thisUser, setChattingWith }) => {
 
     function chat() {
         setSearchResult([])
@@ -7,6 +7,8 @@ export default ({ username, name, setSearchResult, setCurrentRoom, thisUser }) =
             members: [username, thisUser]
         }).then((response) => {
             setCurrentRoom(response.data.roomid)
+            if(response.data.members[0]===thisUser) setChattingWith(response.data.members[0])
+            else setChattingWith(response.data.members[1])
         })
     }
 

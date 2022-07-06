@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import axios from '../../axios'
 import SearchCard from "./SearchCard";
 
-function SearchBox({setCurrentRoom, thisUser}) {
+function SearchBox({setCurrentRoom, thisUser, setChattingWith}) {
   const [searchResult, setSearchResult] = useState([])
   const refSearch = useRef()
 
@@ -29,6 +29,7 @@ function SearchBox({setCurrentRoom, thisUser}) {
         name={user.name}
         setSearchResult={setSearchResult}
         setCurrentRoom={setCurrentRoom}
+        setChattingWith={setChattingWith}
         thisUser={thisUser} />)}
       </div>
     </div>
