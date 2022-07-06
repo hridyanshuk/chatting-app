@@ -3,7 +3,7 @@ import './auth.css'
 import md5 from 'md5'
 import { useRef } from 'react'
 import axios from '../axios'
-export default ({ setLogged, setUser}) => {
+export default ({ setLogged, setUser, setName}) => {
     const refPass=useRef()
     const refUser=useRef()    
     const refConfPass=useRef()
@@ -71,7 +71,8 @@ export default ({ setLogged, setUser}) => {
             await axios.post('/user/new', newUser).then((response) => {
                 if(response.status === 201) {
                     setLogged(true)
-                    setUser(elemName.value)
+                    setUser(elemUser.value)
+                    setName(elemName.value)
                 }
                 else {
                     preventDefault=true

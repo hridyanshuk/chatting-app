@@ -5,14 +5,41 @@ import Message from "./Message.js"
 import {useEffect, useRef, useState} from "react"
 import axios from "../../axios.js"
 import Pusher from 'pusher-js'
-function ChatSection({ thisUser }) {
+import Axios from 'axios'
+import baseurl from '../../baseurl';
 
+function ChatSection({ thisUser, thisName }) {
+  console.log(thisUser)
+  console.log(thisName)
   const [messages, setMessages] = useState([])
   // for fetching
   const chatRef = useRef()
   useEffect(() => {
-    axios.get('/messages/sync', {roomID: 1}).then((response) => {
-      setMessages(response.data);
+
+    // var msgReq = JSON.stringify({
+    //   room:1
+    // })
+
+    // var config = {
+    //   method: 'get',
+    //   url: `${baseurl}/messages/sync`,
+    //   headers: { 
+    //     'Content-Type': 'application/json'
+    //   },
+    //   params : msgReq
+    // }
+
+    // Axios(config)
+    // .then(function (response) {
+    //   setMessages(response.data);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+
+
+    axios.post('/messages/sync', {room: 1}).then((response) => {
+      setMessages(response.data)
     })
   }, [])
 
@@ -46,11 +73,11 @@ function ChatSection({ thisUser }) {
       <div className="chat" ref = {chatRef}>
         {messages.map((data) => {
           return (
-            <Message data = {data} thisUser = {thisUser} />
+            <Message data = {data} thisName = {thisName} thisUser = {thisUser} />
           )
         })}
       </div>
-      <Footer thisUser={thisUser} />
+      <Footer thisUser={thisUser} thisName = {thisName} />
     </div>
   )
 }

@@ -1,64 +1,19 @@
+import { useState } from "react"
 import "../../sidebar.css"
 import ChatCard from "./ChatCard.js"
 
-function ChatList() {
+function ChatList({ chatList, thisUser }) {
+
+
   return (
     <div className="sidebarChatlist">
-
-      <ChatCard data={{
-        name:"Hridyanshu",
-        message:"I am making whats..."
-      }}/>
-      <ChatCard data={{
-        name:"Mukesh",
-        message:"I am making insta..."
-      }}/>
-      <ChatCard data={{
-        name:"Shobhit",
-        message:"I am making snaps..."
-      }}/>
-      <ChatCard data={{
-        name:"Ripudaman",
-        message:"I am making colle..."
-      }}/>
-      <ChatCard data={{
-        name:"Jeteish",
-        message:"I am making googl..."
-      }}/>
-      <ChatCard data={{
-        name:"Mukesh",
-        message:"I am making insta..."
-      }}/>
-      <ChatCard data={{
-        name:"Shobhit",
-        message:"I am making snaps..."
-      }}/>
-      <ChatCard data={{
-        name:"Ripudaman",
-        message:"I am making colle..."
-      }}/>
-      <ChatCard data={{
-        name:"Ripudaman",
-        message:"I am making colle..."
-      }}/>
-      <ChatCard data={{
-        name:"Jeteish",
-        message:"I am making googl..."
-      }}/>
-      <ChatCard data={{
-        name:"Mukesh",
-        message:"I am making insta..."
-      }}/>
-      <ChatCard data={{
-        name:"Shobhit",
-        message:"I am making snaps..."
-      }}/>
-      <ChatCard data={{
-        name:"Ripudaman",
-        message:"I am making colle..."
-      }}/>
-
-
+      {
+        chatList.map((chat) => {
+          let name = chat.members[0]
+          if(name===thisUser) name = chat.members[1]
+          return <ChatCard data = {{name: name}}/>
+        })
+      }
     </div>
   )
 }

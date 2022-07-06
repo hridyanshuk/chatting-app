@@ -3,7 +3,7 @@ import md5 from 'md5'
 import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './auth.css'
-export default ({ setLogged, setUser }) => {
+export default ({ setLogged, setUser, setName }) => {
     const refUser = useRef()
     const refPass = useRef()
     const navigate = useNavigate()
@@ -49,10 +49,11 @@ export default ({ setLogged, setUser }) => {
                 username : elemUser.value,
                 password: password
             }
-            await axios.post('/user/signin', loginUser).then((response) => {
+            await axios.post('/user/signin', loginUser).then(async (response) => {
                 if(response.status === 201) {
                     setLogged(true)
-                    setUser(response.data.name)
+                    await setUser(response.data.username)
+                    await setName(response.data.name)
                     console.log(response.data.name)
                 }
                 else {

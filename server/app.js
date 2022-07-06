@@ -3,6 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import Messages from "./dbMessages.js"
 import User from './Models/user.js'
+import Room from './Models/room.js'
 
 import Pusher from 'pusher'
 import cors from 'cors'
@@ -65,9 +66,10 @@ db.once('open', () => {
       const messageDetails = change.fullDocument
       pusher.trigger("messages", "inserted", {
         sender: messageDetails.sender,
+        senderName: messageDetails.senderName,
         content: messageDetails.content,
         timeStamp: messageDetails.timeStamp,
-        type: messageDetails.type
+        room: messageDetails.room
       });
     }
     else {
@@ -78,14 +80,11 @@ db.once('open', () => {
 })
 
 
-// api routes
-//
-// app.get('/', (req, res)=> {
-//   res.status(200).send('yoo')
-// })
+// Messages APIs
 
 app.post('/messages/new', (req, res) => {
-  const dbMessage = req.body
+  const dbMessage = req.data
+  console.log(dbMessage)
   Messages.create(dbMessage, (err, data) => {
     if(err) {
       res.status(500).send(err)
@@ -96,7 +95,8 @@ app.post('/messages/new', (req, res) => {
   })
 })
 
-app.get('/messages/sync', (req, res) => {
+app.post('/messages/sync', (req, res) => {
+  console.log(req.body)
   const dbMessage = req.body
   Messages.find(dbMessage, (err, data) => {
     if(err) {
@@ -108,6 +108,8 @@ app.get('/messages/sync', (req, res) => {
   })
 })
 
+
+// Authentication APIs
 
 app.post('/user/new', (req, res) => {
   const userData = req.body
@@ -134,13 +136,57 @@ app.post('/user/signin', (req, res) => {
         name: data.name
       })
     }
-  })
-
-  
-  
+  })  
 })
 
 
+// New Chats/Rooms APIs
+
+app.post('/chat/new', (req, res) => {
+  const room = req.body
+  Room.findOne({members:{
+    "$all": room.members
+  }}, async (err, data) => {
+    if(err) res.status(500).send("Some error")
+    else {
+      if(data!==null) res.status(201).send({
+        members:data.members
+      })
+      else {
+        const count = await Room.countDocuments()
+        const newRoom = {
+          roomid: count+1,
+          members: req.body.members
+        }
+        console.log(room)
+        console.log(newRoom)
+        Room.create(newRoom, (err, data) => {
+          if(err) res.status(500).send("Could not insert")
+          else res.status(201).send(data)
+        })
+      }
+    }
+  })
+})
+
+app.post('/chat/list', (req, res) => {
+  const request = req.body;
+  Room.find({
+    members: {
+      "$in":[request.username]
+    }
+  }, (err, data) => {
+    if(err) res.status(500).send(err)
+    else {
+      var send = data.map((obj) => {
+        return {
+          roomid: obj.roomid,
+          members: obj.members
+      }})
+      res.status(201).send(send)
+    }
+  })
+})
 
 // listen
 

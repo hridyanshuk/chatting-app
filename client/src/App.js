@@ -6,7 +6,7 @@ import { useNavigate, Redirect, Link } from 'react-router-dom'
 import Pusher from "pusher-js"
 import axios from "./axios.js"
 import icon from './asset/icon.png'
-function App({logged, user}) {
+function App({logged, thisUser, thisName}) {
   const navigate = useNavigate()
   // useEffect( async () => {
   //   if(!logged) {
@@ -29,8 +29,8 @@ function App({logged, user}) {
   return (
     <div className="app">
       <div className="appBody">
-        <Sidebar />
-        <ChatSection thisUser={user} />
+        <Sidebar thisUser={thisUser} />
+        <ChatSection thisUser={thisUser} thisName={thisName} />
       </div>
     </div>
   );

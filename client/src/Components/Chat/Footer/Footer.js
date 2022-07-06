@@ -4,9 +4,8 @@ import SendIcon from '@mui/icons-material/Send';
 import {IconButton} from "@mui/material"
 import axios from "../../../axios.js"
 import {useRef, useEffect} from "react"
-import textVersion from 'textversionjs'
 
-function Footer({ thisUser }) {
+function Footer({ thisUser, thisName }) {
 
   const textBox = useRef(null)
   const sendButton = useRef(null)
@@ -17,21 +16,22 @@ function Footer({ thisUser }) {
     // alert(data)
     // alert(textVersion(data))
     element.innerHTML = ""
-    if(data != "") {
+    if(data !== "") {
       const msg = {
         sender:thisUser,
+        senderName:thisName,
         content:data,
         timeStamp:"now",
         room: 1
       }
       await axios.post("/messages/new", msg).then( (response) => {
-        console.log("Posted")
+        console.log(response.data)
       }).catch((err)=>console.log(err))
     }
   }
 
   const tabKey = (key) => {
-    if(key.keyCode == 9) {
+    if(key.keyCode === 9) {
       key.preventDefault()
       // var textfield = textBox.current
       // var temp = textfield.innerHTML
@@ -55,7 +55,7 @@ function Footer({ thisUser }) {
       element.removeEventListener('click', sendMessage)
       textfield.removeEventListener('keydown', tabKey)
     }
-  }, [])
+  }, [sendMessage])
 
 
 
