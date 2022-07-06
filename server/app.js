@@ -69,7 +69,7 @@ db.once('open', () => {
         senderName: messageDetails.senderName,
         content: messageDetails.content,
         timeStamp: messageDetails.timeStamp,
-        room: messageDetails.room
+        roomid: messageDetails.roomid
       });
     }
     else {
@@ -83,8 +83,9 @@ db.once('open', () => {
 // Messages APIs
 
 app.post('/messages/new', (req, res) => {
-  const dbMessage = req.data
+  const dbMessage = req.body
   console.log(dbMessage)
+  console.log("message new")
   Messages.create(dbMessage, (err, data) => {
     if(err) {
       res.status(500).send(err)
@@ -140,6 +141,20 @@ app.post('/user/signin', (req, res) => {
 })
 
 
+app.post('/user/search', (req, res) => {
+  const userQuery = req.body
+  console.log(userQuery)
+  User.find({
+    username: {$regex: `${userQuery.userQuery}.*`}
+  }, (err, data) => {
+    if(err) res.status(500).send("error")
+    else {
+      console.log(data)
+      res.status(200).send(data)
+    }
+  })
+})
+
 // New Chats/Rooms APIs
 
 app.post('/chat/new', (req, res) => {
@@ -150,6 +165,7 @@ app.post('/chat/new', (req, res) => {
     if(err) res.status(500).send("Some error")
     else {
       if(data!==null) res.status(201).send({
+        roomid: data.roomid,
         members:data.members
       })
       else {
@@ -187,6 +203,7 @@ app.post('/chat/list', (req, res) => {
     }
   })
 })
+
 
 // listen
 

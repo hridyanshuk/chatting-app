@@ -32,6 +32,11 @@
   /* background-color: red; */
 }
 
+.sidebarSearchDiv {
+  display: flex;
+  flex-direction: column;
+}
+
 .sidebarSearchbox {
   color: grey;
   display: flex;
@@ -47,6 +52,28 @@
   margin-bottom: 5px;
   padding: 7px 10px;
   min-height: 25px;
+}
+
+.sidebarSearchCard {
+  font-family: sans-serif;
+  margin: 5px 20px;
+  padding: 5px 5px;
+}
+
+.sidebarSearchCard:hover {
+  cursor: pointer;
+  background: rgb(233, 233, 233);
+}
+
+.sidebarSearchCardUser {
+  font-size: 15px;
+  font-weight: 500;
+}
+.sidebarSearchCardName {
+  font-size: 10px;
+  color: rgb(112, 112, 112);
+  font-weight: 600;
+
 }
 
 .sidebarSearchbox input {
@@ -81,6 +108,11 @@
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.sidebarChatcard:hover {
+  cursor: pointer;
+  background-color: rgb(247, 247, 247);
 }
 
 .sidebarChatcardInfo {

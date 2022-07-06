@@ -17,7 +17,7 @@ const messageSchema = mongoose.Schema({
     type:String,
     required:true
   },
-  room: {
+  roomid: {
     type:Number,
     required:true
   }

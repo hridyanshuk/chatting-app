@@ -5,7 +5,7 @@ import {IconButton} from "@mui/material"
 import axios from "../../../axios.js"
 import {useRef, useEffect} from "react"
 
-function Footer({ thisUser, thisName }) {
+function Footer({ thisUser, thisName, currentRoom }) {
 
   const textBox = useRef(null)
   const sendButton = useRef(null)
@@ -22,8 +22,9 @@ function Footer({ thisUser, thisName }) {
         senderName:thisName,
         content:data,
         timeStamp:"now",
-        room: 1
+        roomid: currentRoom
       }
+      // console.log(msg)
       await axios.post("/messages/new", msg).then( (response) => {
         console.log(response.data)
       }).catch((err)=>console.log(err))

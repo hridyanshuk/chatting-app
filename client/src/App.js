@@ -8,12 +8,8 @@ import axios from "./axios.js"
 import icon from './asset/icon.png'
 function App({logged, thisUser, thisName}) {
   const navigate = useNavigate()
-  // useEffect( async () => {
-  //   if(!logged) {
-  //     await navigate('/signin')
-  //   }
-  // }, [])
-  // console.log("user is "+user)
+  const [currentRoom, setCurrentRoom] = useState(0)
+  
   if(!logged) {
     return (
       <div className='start'>
@@ -29,8 +25,8 @@ function App({logged, thisUser, thisName}) {
   return (
     <div className="app">
       <div className="appBody">
-        <Sidebar thisUser={thisUser} />
-        <ChatSection thisUser={thisUser} thisName={thisName} />
+        <Sidebar thisUser={thisUser} setCurrentRoom={setCurrentRoom} />
+        <ChatSection thisUser={thisUser} thisName={thisName} currentRoom ={currentRoom} />
       </div>
     </div>
   );

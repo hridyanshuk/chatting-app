@@ -2,21 +2,24 @@ import "../../sidebar.css"
 import {Avatar} from "@mui/material"
 import ChatDivider from "./ChatDivider.js"
 
-function ChatCard(props) {
+function ChatCard({data, setCurrentRoom}) {
   return (
     <div className="sidebarChatcardContainer">
-    <div className="sidebarChatcard">
-      <Avatar />
-      <div className="sidebarChatcardInfo">
-        <div className="sidebarChatcardInfoTitle">
-          {props.data.name}
-        </div>
-        <div className="sidebarChatcardInfoMessage">
-          {props.data.message}
+      <div className="sidebarChatcard" onClick={() => {
+        setCurrentRoom(data.roomid)
+        console.log(data.roomid)
+      }}>
+        <Avatar />
+        <div className="sidebarChatcardInfo">
+          <div className="sidebarChatcardInfoTitle">
+            {data.name}
+          </div>
+          <div className="sidebarChatcardInfoMessage">
+            {data.message}
+          </div>
         </div>
       </div>
-    </div>
-    <ChatDivider />
+      <ChatDivider />
     </div>
   )
 }

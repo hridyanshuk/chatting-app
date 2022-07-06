@@ -4,7 +4,7 @@ import SearchBox from "./SearchBox.js"
 import ChatList from "./ChatList.js"
 import { useEffect, useState } from 'react';
 import axios from '../../axios';
-function Sidebar({ thisUser }) {
+function Sidebar({ thisUser, setCurrentRoom }) {
 
   const [chatList, setChatList] = useState([])
 
@@ -13,17 +13,17 @@ function Sidebar({ thisUser }) {
       username: thisUser
     }).then((response) => {
       setChatList(response.data)
-    })
+    }).catch()
   }, [chatList])
 
   return (
     <div className="sidebar">
       <div className="sidebarNonscrollable">
         <Header />
-        <SearchBox />
+        <SearchBox setCurrentRoom={setCurrentRoom} thisUser={thisUser} />
         {/*<hr className="sidebarChatlistDivider" />*/}
       </div>
-      <ChatList chatList = {chatList} thisUser={thisUser} />
+      <ChatList chatList = {chatList} thisUser={thisUser} setCurrentRoom = {setCurrentRoom} />
     </div>
   )
 }

@@ -8,52 +8,34 @@ import Pusher from 'pusher-js'
 import Axios from 'axios'
 import baseurl from '../../baseurl';
 
-function ChatSection({ thisUser, thisName }) {
-  console.log(thisUser)
-  console.log(thisName)
+function ChatSection({ thisUser, thisName, currentRoom }) {
+  // console.log(thisUser)
+  // console.log(thisName)
   const [messages, setMessages] = useState([])
   // for fetching
   const chatRef = useRef()
   useEffect(() => {
 
-    // var msgReq = JSON.stringify({
-    //   room:1
-    // })
-
-    // var config = {
-    //   method: 'get',
-    //   url: `${baseurl}/messages/sync`,
-    //   headers: { 
-    //     'Content-Type': 'application/json'
-    //   },
-    //   params : msgReq
-    // }
-
-    // Axios(config)
-    // .then(function (response) {
-    //   setMessages(response.data);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
-
-
-    axios.post('/messages/sync', {room: 1}).then((response) => {
+    // console.log("Current room is "+currentRoom)
+    axios.post('/messages/sync', {roomid: currentRoom}).then((response) => {
       setMessages(response.data)
     })
-  }, [])
+  }, [currentRoom])
 
   useEffect(() => {
     // console.log("Use effect")
+    console.log(currentRoom)
 
     const pusher = new Pusher('7290ef44095a92522cee', {
       cluster: 'ap2'
     });
 
     const channel = pusher.subscribe('messages');
+    
     channel.bind('inserted', function(newMessage) {
+      console.log("new messgae", newMessage)
+      if(newMessage.roomid === currentRoom)
       setMessages([...messages, newMessage])
-      
     });
 
     return () => {
@@ -63,7 +45,7 @@ function ChatSection({ thisUser, thisName }) {
       element.scrollTop = element.scrollHeight
       // console.log("done brooo")
     }
-  }, [messages])
+  }, [messages, currentRoom])
 
 
 
@@ -77,7 +59,7 @@ function ChatSection({ thisUser, thisName }) {
           )
         })}
       </div>
-      <Footer thisUser={thisUser} thisName = {thisName} />
+      <Footer thisUser={thisUser} thisName = {thisName} currentRoom = {currentRoom} />
     </div>
   )
 }
