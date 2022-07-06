@@ -93,7 +93,7 @@ db.once('open', () => {
 
 app.post('/messages/new', (req, res) => {
   const dbMessage = req.body
-  console.log(dbMessage)
+  // console.log(dbMessage)
   console.log("message new")
   Messages.create(dbMessage, (err, data) => {
     if(err) {
@@ -106,7 +106,7 @@ app.post('/messages/new', (req, res) => {
 })
 
 app.post('/messages/sync', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   const dbMessage = req.body
   Messages.find(dbMessage, (err, data) => {
     if(err) {
@@ -131,9 +131,8 @@ app.post('/user/new', (req, res) => {
 
 app.post('/user/signin', (req, res) => {
   const userData = req.body
-  console.log(userData)
-  var user = {}
-  var found=false
+  // console.log(userData)
+  
   User.findOne({
     "username": userData.username,
     "password": userData.password
@@ -152,14 +151,17 @@ app.post('/user/signin', (req, res) => {
 
 app.post('/user/search', (req, res) => {
   const userQuery = req.body
-  console.log(userQuery)
+  // console.log(userQuery)
   User.find({
     username: {$regex: `${userQuery.userQuery}.*`}
   }, (err, data) => {
     if(err) res.status(500).send("error")
     else {
-      console.log(data)
-      res.status(200).send(data)
+      // console.log(data)
+      res.status(200).send({
+        username: data.username,
+        name: data.name
+      })
     }
   })
 })
@@ -183,8 +185,8 @@ app.post('/chat/new', (req, res) => {
           roomid: count+1,
           members: req.body.members
         }
-        console.log(room)
-        console.log(newRoom)
+        // console.log(room)
+        // console.log(newRoom)
         Room.create(newRoom, (err, data) => {
           if(err) res.status(500).send("Could not insert")
           else res.status(201).send(data)

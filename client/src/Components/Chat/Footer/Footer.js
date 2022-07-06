@@ -26,7 +26,7 @@ function Footer({ thisUser, thisName, currentRoom }) {
       }
       // console.log(msg)
       await axios.post("/messages/new", msg).then( (response) => {
-        console.log(response.data)
+        // console.log(response.data)
       }).catch((err)=>console.log(err))
     }
   }

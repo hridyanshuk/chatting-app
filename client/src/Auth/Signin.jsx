@@ -54,7 +54,7 @@ export default ({ setLogged, setUser, setName }) => {
                     setLogged(true)
                     await setUser(response.data.username)
                     await setName(response.data.name)
-                    console.log(response.data.name)
+                    // console.log(response.data.name)
                 }
                 else {
                     preventDefault=true

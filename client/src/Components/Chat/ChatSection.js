@@ -24,7 +24,7 @@ function ChatSection({ thisUser, thisName, currentRoom, chattingWith }) {
 
   useEffect(() => {
     // console.log("Use effect")
-    console.log(currentRoom)
+    // console.log(currentRoom)
 
     const pusher = new Pusher('7290ef44095a92522cee', {
       cluster: 'ap2'
@@ -33,7 +33,7 @@ function ChatSection({ thisUser, thisName, currentRoom, chattingWith }) {
     const channel = pusher.subscribe('messages');
     
     channel.bind('inserted', function(newMessage) {
-      console.log("new messgae", newMessage)
+      // console.log("new messgae", newMessage)
       if(newMessage.roomid === currentRoom)
       setMessages([...messages, newMessage])
     });

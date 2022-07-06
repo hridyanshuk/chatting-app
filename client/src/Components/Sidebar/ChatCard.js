@@ -8,7 +8,7 @@ function ChatCard({data, setCurrentRoom, setChattingWith}) {
       <div className="sidebarChatcard" onClick={() => {
         setCurrentRoom(data.roomid)
         setChattingWith(data.name)
-        console.log(data.roomid)
+        // console.log(data.roomid)
       }}>
         <Avatar />
         <div className="sidebarChatcardInfo">

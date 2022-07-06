@@ -7,7 +7,7 @@ function InfoCard(props) {
         {props.data.name}
       </div>
       <div className="chatsectionLastSeen">
-        last seen {props.data.lastSeen}
+        {props.data.lastSeen}
       </div>
     </div>
   )

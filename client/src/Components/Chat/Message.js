@@ -14,7 +14,7 @@ function Message({data, thisUser}) {
   var type = "reciever";
 
   if(data.sender !== thisUser) type = "sender"
-  console.log(data)
+  // console.log(data)
   return (
     <div className={"messageCardContainer_"+type}>
       <div className="messageCard">
