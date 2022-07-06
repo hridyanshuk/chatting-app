@@ -4,7 +4,7 @@ import mongoose from 'mongoose'
 import Messages from "./dbMessages.js"
 import User from './Models/user.js'
 import Room from './Models/room.js'
-
+import dotenv from 'dotenv'
 import Pusher from 'pusher'
 import cors from 'cors'
 
@@ -12,6 +12,9 @@ import secrets from "./secrets.js"
 
 // app config
 const app = express()
+
+dotenv.config()
+
 const port = process.env.PORT || 9000
 // process.env.PORT || 3000 means:
 // whatever is in the environment variable PORT,
@@ -23,7 +26,13 @@ const port = process.env.PORT || 9000
 // of the environment in which you're running your server.
 
 const pusher = new Pusher(
-  secrets.pusherObject
+  {
+    appId: process.env.PUSHER_APPID,
+    key: process.env.PUSHER_KEY,
+    secret: process.env.PUSHER_SECRET,
+    cluster: process.env.PUSHER_CLUSTER,
+    useTLS: true
+  }
 );
 
 // middleware
@@ -40,9 +49,9 @@ app.use(cors())
 
 // database stuff
 
-const connection_url = `mongodb+srv://${secrets.DB_USERNAME}:${secrets.DB_PASSWORD}@cluster0.oiz2g.mongodb.net/?retryWrites=true&w=majority`
+// const connection_url = 
 // console.log(connection_url)
-mongoose.connect(connection_url, {
+mongoose.connect(process.env.CONNECTION_URL, {
   // useCreateIndex: true,
   // useNewUrlParser: true,
   // useUnifiedTopology: true
