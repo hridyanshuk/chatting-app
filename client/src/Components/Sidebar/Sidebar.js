@@ -14,7 +14,7 @@ function Sidebar({ thisUser, setCurrentRoom, setChattingWith }) {
     }).then((response) => {
       setChatList(response.data)
     }).catch()
-  }, [chatList])
+  }, [setChatList])
 
   return (
     <div className="sidebar">

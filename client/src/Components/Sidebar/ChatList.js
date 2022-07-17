@@ -5,7 +5,6 @@ import ChatCard from "./ChatCard.js"
 function ChatList({ chatList, thisUser, setCurrentRoom, setChattingWith }) {
 
 
-
   const chats = chatList.map((chat) => {
     let name = chat.members[0]
     if(name===thisUser) name = chat.members[1]

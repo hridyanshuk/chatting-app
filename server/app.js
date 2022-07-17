@@ -8,7 +8,6 @@ import dotenv from 'dotenv'
 import Pusher from 'pusher'
 import cors from 'cors'
 
-import secrets from "./secrets.js"
 
 // app config
 const app = express()
@@ -89,6 +88,10 @@ db.once('open', () => {
 })
 
 
+app.get('/', (req, res) => {
+  res.status(200).send("WELCOME TO THE APP")
+})
+
 // Messages APIs
 
 app.post('/messages/new', (req, res) => {
@@ -108,14 +111,17 @@ app.post('/messages/new', (req, res) => {
 app.post('/messages/sync', (req, res) => {
   // console.log(req.body)
   const dbMessage = req.body
-  Messages.find(dbMessage, (err, data) => {
-    if(err) {
-      res.status(500).send(err)
-    }
-    else {
-      res.status(200).send(data) // we are downloading data
-    }
-  })
+  if(dbMessage.roomid === 0) res.status(200).send([])
+  else {
+    Messages.find(dbMessage, (err, data) => {
+      if(err) {
+        res.status(500).send(err)
+      }
+      else {
+        res.status(200).send(data) // we are downloading data
+      }
+    })
+  }
 })
 
 
@@ -158,10 +164,13 @@ app.post('/user/search', (req, res) => {
     if(err) res.status(500).send("error")
     else {
       // console.log(data)
-      res.status(200).send({
-        username: data.username,
-        name: data.name
-      })
+      var senddata = []
+      data.map((obj) => senddata.push({
+        username: obj.username,
+        name: obj.name
+      }))
+      // console.log(senddata)
+      res.status(200).send(senddata)
     }
   })
 })
@@ -205,11 +214,12 @@ app.post('/chat/list', (req, res) => {
   }, (err, data) => {
     if(err) res.status(500).send(err)
     else {
-      var send = data.map((obj) => {
-        return {
+      var send =[]
+      data.map((obj) => {
+        send.push({
           roomid: obj.roomid,
           members: obj.members
-      }})
+      })})
       res.status(201).send(send)
     }
   })

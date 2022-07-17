@@ -47,15 +47,16 @@ function ChatSection({ thisUser, thisName, currentRoom, chattingWith }) {
     }
   }, [messages, currentRoom])
 
-
+  var i=0
 
   return (
     <div className="chatsection">
       <Header chattingWith={chattingWith} />
       <div className="chat" ref = {chatRef}>
         {messages.map((data) => {
+          i=i+1
           return (
-            <Message data = {data} thisName = {thisName} thisUser = {thisUser} />
+            <Message key={i} data = {data} thisName = {thisName} thisUser = {thisUser} />
           )
         })}
       </div>
