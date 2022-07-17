@@ -1,16 +1,7 @@
 # chatting-app
-<b>Home page</b>
-<img src="./assets/choices.png" />
+## All Pages:
 <br>
-<hr>
-<b>Sign in page</b>
-<img src="./assets/signin.png" />
 <br>
-<hr>
-<b>Sign up page</b>
-<img src="./assets/signup.png" />
-<br>
-<hr>
 <b>Main page (No chat selected)</b>
 <img src="./assets/nochat.png" />
 <br>
@@ -25,5 +16,17 @@
 <hr>
 <b>Sending messages</b>
 <img src="./assets/msg.png" />
+<br>
+<hr>
+<b>Home page</b>
+<img src="./assets/choices.png" />
+<br>
+<hr>
+<b>Sign in page</b>
+<img src="./assets/signin.png" />
+<br>
+<hr>
+<b>Sign up page</b>
+<img src="./assets/signup.png" />
 <br>
 <hr>
