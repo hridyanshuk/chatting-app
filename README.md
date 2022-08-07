@@ -1,4 +1,7 @@
 # chatting-app
+
+<a href="https://whistl.netlify.app">Link to hosted website</a>
+
 ## All Pages:
 <br>
 <br>
